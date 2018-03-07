@@ -1,33 +1,26 @@
 package com.escuelita.java8.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
+public class Person {
 
-@Entity
-@Table(name = "persons")
-public class Person implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
-    private Long id;
+    private int id;
 
-    @Column(name = "NAME")
     private String name;
 
-    @Column(name = "AGE")
     private int age;
 
-    @Column(name = "GENDER")
+    private String civilStatus;
+
     private String gender;
 
-    @Column(name = "OCCUPATION")
     private String occupation;
 
 
-    public Person(String name, int age, String gender, String occupation) {
+    public Person(int id, String name, int age, String civilStatus, String gender, String occupation) {
+        this.id = id;
         this.name = name;
         this.age = age;
+        this.civilStatus = civilStatus;
         this.gender = gender;
         this.occupation = occupation;
     }
@@ -35,11 +28,11 @@ public class Person implements Serializable {
     public Person() {
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -73,5 +66,13 @@ public class Person implements Serializable {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public String getCivilStatus() {
+        return civilStatus;
+    }
+
+    public void setCivilStatus(String civilStatus) {
+        this.civilStatus = civilStatus;
     }
 }

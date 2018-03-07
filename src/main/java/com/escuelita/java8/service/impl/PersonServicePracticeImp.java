@@ -11,8 +11,6 @@ import java.util.List;
 @Service
 public class PersonServicePracticeImp implements PersonServicePractice {
 
-    @Autowired
-    PersonRepository personRepository;
 
     @Override
     public List<Person> getAllGenderMale() {
@@ -27,6 +25,6 @@ public class PersonServicePracticeImp implements PersonServicePractice {
     }
 
     private List<Person> getAllPerson(){
-        return personRepository.findAll();
+        return PersonRepository.getAll();
     }
 }

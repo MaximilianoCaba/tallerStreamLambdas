@@ -1,5 +1,6 @@
 package com.escuelita.java8.service.impl;
 
+import com.escuelita.java8.constants.Constants;
 import com.escuelita.java8.entity.Person;
 import com.escuelita.java8.repository.PersonRepository;
 import com.escuelita.java8.service.PersonServiceResolution;
@@ -17,7 +18,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     @Override
     public List<Person> getAllGenderMale() {
         return this.getAllPerson().stream()
-                .filter(p -> p.getGender().equals("HOMBRE"))
+                .filter(p -> p.getGender().equals(Constants.GENDER_MALE))
                 .collect(Collectors.toList());
     }
 
@@ -45,7 +46,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     @Override
     public List<Person> getPersonsPromoteProgrammer(){
         return this.getAllPersonInNewPosition().stream()
-                .filter(p -> p.getOccupation().equals("PROGRAMADOR"))
+                .filter(p -> p.getOccupation().equals(Constants.OCCUPATION_PROGRAMMER))
                 .map(this::ascenderProgramador)
                 .collect(Collectors.toList());
     }
@@ -58,7 +59,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     }
 
     private Person ascenderProgramador(Person person){
-        person.setOccupation("SUPER PROGRAMADOR");
+        person.setOccupation(Constants.OCCUPATION_SUPER_PROGRAMMER);
         return person;
     }
 

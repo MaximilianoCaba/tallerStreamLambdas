@@ -27,77 +27,83 @@ public class PersonServiceTest {
     @Test
     public void getPersonWhyGenderIsMale() {
         //Ejercicio uno:
-        //Se requiere
+        //Se requiere obtener una lista de todos los usuarios que son hombres
         //List<Person> personList = personServicePactice.getAllGenderMale();
-        //assertTrue(personList.size() != 0);
-        //assertEquals(personList.size(), 503);
+        //assertEquals(personList.size(), 13);
 
+        //SOLUCION CON LA API STREAM & LAMBDAS
         assertEquals(personServiceResolution.getAllGenderMale().size(), 13);
     }
 
     @Test
     public void getAverageAllAge() {
         //Ejercicio dos:
-        //Se requiere
-        //int averagePersons = personServicePactice.getAverageAllAge();
+        //Se requiere averiguar cual es el promedio de edad de todas las persona
+        // (suma de todas las edades / la cantidad de personas)
+        //int averagePerson = personServicePactice.getAverageAllAge();
         //assertTrue(averagePersons != 0);
-        //assertEquals(averagePersons, 0);
 
-        assertEquals(personServiceResolution.getAverageAllAge(), 30);
+        //SOLUCION CON LA API STREAM & LAMBDAS
+        assertTrue(personServiceResolution.getAverageAllAge() != 0);
 
     }
 
     @Test
     public void getAllPersonInNewWorkingPosition() {
+        //Ejercicio tres:
+        //Se requiere actualizar la lista principal el campo occupation haciendo una consulta por cada uno para saber su estado
+        //List<Person> personList = personServicePactice.getAllPersonInNewWorkingPosition();
+        //assertTrue(personList.size() != 0);
+        //assertTrue(personList.get(7).getOccupation() != null);
+        //assertTrue(personList.get(11).getOccupation() != null);
+        //assertTrue(personList.get(17).getOccupation() != null);
 
-        //Ejercicio cuatro:
-        //Se requiere
-        //int averagePersons = personServicePactice.getAverageAllAge();
-        //assertTrue(averagePersons != 0);
-        //assertEquals(averagePersons, 0);
-
+        //SOLUCION CON LA API STREAM & LAMBDAS
         assertEquals(personServiceResolution.getAllPersonInNewWorkingPosition().size(), 20);
+        assertTrue(personServiceResolution.getAllPersonInNewWorkingPosition().get(7).getOccupation() != null);
+        assertTrue(personServiceResolution.getAllPersonInNewWorkingPosition().get(11).getOccupation() != null);
+        assertTrue(personServiceResolution.getAllPersonInNewWorkingPosition().get(17).getOccupation() != null);
 
     }
 
 
     @Test
     public void getAllPersonMapped() {
-
         //Ejercicio cuatro:
-        //Se requiere
-        //int averagePersons = personServicePactice.getAverageAllAge();
-        //assertTrue(averagePersons != 0);
-        //assertEquals(averagePersons, 0);
+        //Se requiere mapear una lista de personas
+        //Map<Integer, Person> personMap = personServicePactice.getAllPersonMapped();
+        //assertEquals(personMap.size() , 20);
 
+        //SOLUCION CON LA API STREAM & LAMBDAS
         assertEquals(personServiceResolution.getAllPersonMapped().size(), 20);
 
     }
 
     @Test
     public void getPersonsPromoteProgrammer() {
+        //Ejercicio cinco:
+        //Se requiere devolver una lista modificada de los programadores
+        //List<Person> personList = personServicePactice.getPersonsPromoteProgrammer();
+        //assertEquals(averagePersons.size(), 8);
 
-        //Ejercicio cuatro:
-        //Se requiere
-        //int averagePersons = personServicePactice.getAverageAllAge();
-        //assertTrue(averagePersons != 0);
-        //assertEquals(averagePersons, 0);
-
+        //SOLUCION CON LA API STREAM & LAMBDAS
         assertEquals(personServiceResolution.getPersonsPromoteProgrammer().size(), 8);
 
     }
 
     @Test
     public void getAllpersonSortByAge() {
+        //Ejercicio seis:
+        //Se requiere ordenar de menor a mayor las edades de las personas
+        //List<Person> personList1 = personServicePactice.getAllpersonSortByAge();
+        //assertTrue(personList.size() != 0);
+        //assertTrue(personList1.get(0).getAge() <= personList1.get(1).getAge());
+        //assertTrue(personList1.get(4).getAge() <= personList1.get(5).getAge());
+        //assertTrue(personList1.get(11).getAge() <= personList1.get(12).getAge());
+        //assertTrue(personList1.get(17).getAge() <= personList1.get(18).getAge());
 
-        //Ejercicio cuatro:
-        //Se requiere
-        //int averagePersons = personServicePactice.getAverageAllAge();
-        //assertTrue(averagePersons != 0);
-        //assertEquals(averagePersons, 0);
-
+        //SOLUCION CON LA API STREAM & LAMBDAS
         List<Person> personList = personServiceResolution.getAllpersonSortByAge();
-
         assertTrue(personList.get(0).getAge() <= personList.get(1).getAge());
         assertTrue(personList.get(4).getAge() <= personList.get(5).getAge());
         assertTrue(personList.get(11).getAge() <= personList.get(12).getAge());

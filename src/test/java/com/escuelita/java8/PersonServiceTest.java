@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -129,20 +126,17 @@ public class PersonServiceTest {
     }
 
     @Test
-    public void getPersonInTheMiddleList(){
+    public void getPersonInTheMiddleList() {
         //Ejercicio ocho:
-        //Se requiere obtener el usuario que se encuentra en el medio de la lista
+        //Se requiere obtener el usuario (IMPAR)o los usuarios(PAR) que se encuentra en el medio de la lista
+        //assertEquals(personServicePactice.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonImpar()).get(0).getId(), 10);
+        //assertEquals(personServicePactice.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonPar()).get(0).getId(), 10);
+        //assertEquals(personServicePactice.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonPar()).get(1).getId(), 11);
 
-
-
+        //SOLUCION CON LA API STREAM & LAMBDAS
         assertEquals(personServiceResolution.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonImpar()).get(0).getId(), 10);
         assertEquals(personServiceResolution.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonPar()).get(0).getId(), 10);
         assertEquals(personServiceResolution.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonPar()).get(1).getId(), 11);
 
-
     }
-
-
-
-
 }

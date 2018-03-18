@@ -10,7 +10,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,11 +27,11 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
         List<Person> personList = this.getAllPerson();
         return personList.stream()
                 .map(Person::getAge)
-                .reduce(0,(a, b) -> a+b) / personList.size();
+                .reduce(0, (a, b) -> a + b) / personList.size();
     }
 
     @Override
-    public List<Person> getAllPersonInNewWorkingPosition(){
+    public List<Person> getAllPersonInNewWorkingPosition() {
         return this.getAllPerson().stream()
                 .map(p -> this.getPersonInNewPosition(p.getId()))
                 .collect(Collectors.toList());
@@ -45,7 +44,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     }
 
     @Override
-    public List<Person> getPersonsPromoteProgrammer(){
+    public List<Person> getPersonsPromoteProgrammer() {
         return this.getAllPersonInNewPosition().stream()
                 .filter(p -> p.getOccupation().equals(Constants.OCCUPATION_PROGRAMMER))
                 .map(Person::ascenderProgramador)
@@ -53,14 +52,14 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     }
 
     @Override
-    public List<Person> getAllpersonSortByAge(){
+    public List<Person> getAllpersonSortByAge() {
         return this.getAllPersonInNewPosition().stream()
                 .sorted(Comparator.comparing(Person::getAge))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Person findAnyByName(String personName){
+    public Person findAnyByName(String personName) {
         return this.getAllPersonInNewPosition().stream()
                 .filter(person -> person.getName().equals(personName))
                 .findAny()
@@ -68,7 +67,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     }
 
     @Override
-    public List<Person> getPersonInTheMiddleList(List<Person> listPersons){
+    public List<Person> getPersonInTheMiddleList(List<Person> listPersons) {
         int[] cut = getListCut(listPersons.size());
         return listPersons.stream()
                 .skip(cut[0])
@@ -76,42 +75,39 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
                 .collect(Collectors.toList());
     }
 
-    private int[] getListCut(int sizeList){
 
-        int firstCut;
-        int secondCut = 1;
-        if((sizeList % 2) == 0){
-            firstCut = (sizeList - 1) / 2;
-            secondCut = 2;
-        }else
-            firstCut = sizeList / 2;
-
-
-        return new int[] {firstCut, secondCut};
-
-    }
-
-    private List<Person> getAllPerson(){
+    private List<Person> getAllPerson() {
         return PersonRepository.getAll();
     }
 
-    private Person getPersonInNewPosition(int idPerson){
+    private Person getPersonInNewPosition(int idPerson) {
         return PersonRepository.getPersonInNewPosition(idPerson);
     }
 
-    private List<Person> getAllPersonInNewPosition(){
+    private List<Person> getAllPersonInNewPosition() {
         return PersonRepository.getAllpersonInNewPosition();
     }
 
-    public static List<Person> getAllPersonPar(){
+    public static List<Person> getAllPersonPar() {
         return PersonRepository.getAll();
 
     }
 
-    public static List<Person> getAllPersonImpar(){
+    public static List<Person> getAllPersonImpar() {
         List<Person> personList = PersonRepository.getAll();
         personList.remove(19);
         return personList;
     }
 
+    private int[] getListCut(int sizeList) {
+        int firstCut;
+        int secondCut = 1;
+        if ((sizeList % 2) == 0) {
+            firstCut = (sizeList - 1) / 2;
+            secondCut = 2;
+        } else
+            firstCut = sizeList / 2;
+
+        return new int[]{firstCut, secondCut};
+    }
 }

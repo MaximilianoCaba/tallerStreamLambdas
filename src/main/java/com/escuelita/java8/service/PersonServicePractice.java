@@ -19,4 +19,8 @@ public interface PersonServicePractice {
 
     List<Person> getAllpersonSortByAge();
 
+    Person findAnyByName(String personName);
+
+    List<Person> getPersonInTheMiddleList(List<Person> listPersons);
+
 }

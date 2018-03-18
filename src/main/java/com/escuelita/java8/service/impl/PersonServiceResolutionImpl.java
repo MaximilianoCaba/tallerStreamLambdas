@@ -10,6 +10,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,7 +48,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     public List<Person> getPersonsPromoteProgrammer(){
         return this.getAllPersonInNewPosition().stream()
                 .filter(p -> p.getOccupation().equals(Constants.OCCUPATION_PROGRAMMER))
-                .map(this::ascenderProgramador)
+                .map(Person::ascenderProgramador)
                 .collect(Collectors.toList());
     }
 
@@ -58,9 +59,36 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
                 .collect(Collectors.toList());
     }
 
-    private Person ascenderProgramador(Person person){
-        person.setOccupation(Constants.OCCUPATION_SUPER_PROGRAMMER);
-        return person;
+    @Override
+    public Person findAnyByName(String personName){
+        return this.getAllPersonInNewPosition().stream()
+                .filter(person -> person.getName().equals(personName))
+                .findAny()
+                .orElse(null);
+    }
+
+    @Override
+    public List<Person> getPersonInTheMiddleList(List<Person> listPersons){
+        int[] cut = getListCut(listPersons.size());
+        return listPersons.stream()
+                .skip(cut[0])
+                .limit(cut[1])
+                .collect(Collectors.toList());
+    }
+
+    private int[] getListCut(int sizeList){
+
+        int firstCut;
+        int secondCut = 1;
+        if((sizeList % 2) == 0){
+            firstCut = (sizeList - 1) / 2;
+            secondCut = 2;
+        }else
+            firstCut = sizeList / 2;
+
+
+        return new int[] {firstCut, secondCut};
+
     }
 
     private List<Person> getAllPerson(){
@@ -73,6 +101,17 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
 
     private List<Person> getAllPersonInNewPosition(){
         return PersonRepository.getAllpersonInNewPosition();
+    }
+
+    public static List<Person> getAllPersonPar(){
+        return PersonRepository.getAll();
+
+    }
+
+    public static List<Person> getAllPersonImpar(){
+        List<Person> personList = PersonRepository.getAll();
+        personList.remove(19);
+        return personList;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.escuelita.java8.entity;
 
+import com.escuelita.java8.constants.Constants;
+
 public class Person {
 
 
@@ -74,5 +76,10 @@ public class Person {
 
     public void setCivilStatus(String civilStatus) {
         this.civilStatus = civilStatus;
+    }
+
+    public Person ascenderProgramador(){
+        this.setOccupation(Constants.OCCUPATION_SUPER_PROGRAMMER);
+        return this;
     }
 }

@@ -18,4 +18,8 @@ public interface PersonServiceResolution {
     List<Person> getPersonsPromoteProgrammer();
 
     List<Person> getAllpersonSortByAge();
+
+    Person findAnyByName(String personName);
+
+    List<Person> getPersonInTheMiddleList(List<Person> listPersons);
 }

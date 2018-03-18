@@ -3,13 +3,17 @@ package com.escuelita.java8;
 import com.escuelita.java8.entity.Person;
 import com.escuelita.java8.service.PersonServicePractice;
 import com.escuelita.java8.service.PersonServiceResolution;
+import com.escuelita.java8.service.impl.PersonServiceResolutionImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
@@ -110,6 +114,35 @@ public class PersonServiceTest {
         assertTrue(personList.get(17).getAge() <= personList.get(18).getAge());
 
     }
+
+    @Test
+    public void getPersonByName() {
+        //Ejercicio siete:
+        //Se requiere buscar en una lista una persona por su nombre y retomarla
+        //assertEquals(personServicePactice.findAnyByName("Rogelia").getId(), 10);
+        //assertNull(personServicePactice.findAnyByName("wbgekugfdiuf"));
+
+        //SOLUCION CON LA API STREAM & LAMBDAS
+        assertEquals(personServiceResolution.findAnyByName("Rogelia").getId(), 10);
+        assertNull(personServiceResolution.findAnyByName("wbgekugfdiuf"));
+
+    }
+
+    @Test
+    public void getPersonInTheMiddleList(){
+        //Ejercicio ocho:
+        //Se requiere obtener el usuario que se encuentra en el medio de la lista
+
+
+
+        assertEquals(personServiceResolution.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonImpar()).get(0).getId(), 10);
+        assertEquals(personServiceResolution.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonPar()).get(0).getId(), 10);
+        assertEquals(personServiceResolution.getPersonInTheMiddleList(PersonServiceResolutionImpl.getAllPersonPar()).get(1).getId(), 11);
+
+
+    }
+
+
 
 
 }

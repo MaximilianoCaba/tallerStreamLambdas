@@ -59,7 +59,7 @@ public class PersonServiceResolutionImpl implements PersonServiceResolution {
     }
 
     @Override
-    public Person findAnyByName(String personName) {
+    public Person findOneByName(String personName) {
         return this.getAllPersonInNewPosition().stream()
                 .filter(person -> person.getName().equals(personName))
                 .findAny()

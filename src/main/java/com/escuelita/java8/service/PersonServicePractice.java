@@ -19,7 +19,7 @@ public interface PersonServicePractice {
 
     List<Person> getAllpersonSortByAge();
 
-    Person findAnyByName(String personName);
+    Person findOneByName(String personName);
 
     List<Person> getPersonInTheMiddleList(List<Person> listPersons);
 

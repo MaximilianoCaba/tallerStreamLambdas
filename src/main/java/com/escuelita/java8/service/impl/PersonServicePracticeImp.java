@@ -75,7 +75,7 @@ public class PersonServicePracticeImp implements PersonServicePractice {
     }
 
     @Override
-    public Person findAnyByName(String personName) {
+    public Person findOneByName(String personName) {
         //Material para realizar la tarea:
         //se debe usar la lista this.getAllPerson()
 

@@ -116,12 +116,12 @@ public class PersonServiceTest {
     public void getPersonByName() {
         //Ejercicio siete:
         //Se requiere buscar en una lista una persona por su nombre y retomarla
-        //assertEquals(personServicePactice.findAnyByName("Rogelia").getId(), 10);
-        //assertNull(personServicePactice.findAnyByName("wbgekugfdiuf"));
+        //assertEquals(personServicePactice.findOneByName("Rogelia").getId(), 10);
+        //assertNull(personServicePactice.findOneByName("wbgekugfdiuf"));
 
         //SOLUCION CON LA API STREAM & LAMBDAS
-        assertEquals(personServiceResolution.findAnyByName("Rogelia").getId(), 10);
-        assertNull(personServiceResolution.findAnyByName("wbgekugfdiuf"));
+        assertEquals(personServiceResolution.findOneByName("Rogelia").getId(), 10);
+        assertNull(personServiceResolution.findOneByName("wbgekugfdiuf"));
 
     }
 

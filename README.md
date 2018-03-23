@@ -41,6 +41,6 @@ TreeSet
 
 Map: es una colección de elementos denominada “diccionario” donde su principal característica el poder persistir información a través de una clave no duplicada seguida por un valor, al igual que las colecciones Set se puede optar por la manera de procesar el map con HashMap, TreeMap y LinkedHashMap
 
-# FUENTE: Oracle
+# FUENTE: Oracle (web) / Java 8 in action (libro)
 
 
